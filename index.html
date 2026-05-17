@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ali — Shaxsiy Sahifa</title>
-  <meta name="description" content="Ali uchun zamonaviy, responsiv shaxsiy veb-sahifa." />
+  <title>Ali — Qiziqarli Sahifa</title>
+  <meta name="description" content="Ali uchun qiziqarli faktlar, mini interaktiv bo‘limlar va zamonaviy dizayndagi public web sahifa." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg2: #11182f;
-      --card: rgba(255,255,255,.08);
+      --bg: #08101f;
+      --bg2: #101a33;
+      --card: rgba(255,255,255,.07);
       --card-strong: rgba(255,255,255,.12);
       --text: #eef2ff;
       --muted: rgba(238,242,255,.72);
       --line: rgba(255,255,255,.12);
-      --accent: #7c3aed;
+      --accent: #8b5cf6;
       --accent2: #06b6d4;
+      --accent3: #f59e0b;
       --success: #22c55e;
-      --shadow: 0 24px 80px rgba(0,0,0,.35);
+      --shadow: 0 24px 80px rgba(0,0,0,.34);
       --radius: 24px;
       --radius-sm: 16px;
-      --max: 1120px;
+      --max: 1160px;
     }
 
     * { box-sizing: border-box; }
@@ -29,26 +30,24 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(1000px 600px at 15% 10%, rgba(124,58,237,.38), transparent 50%),
-        radial-gradient(900px 520px at 85% 20%, rgba(6,182,212,.22), transparent 48%),
-        linear-gradient(180deg, #050816 0%, var(--bg) 100%);
       min-height: 100vh;
+      background:
+        radial-gradient(1100px 700px at 18% 12%, rgba(139,92,246,.36), transparent 50%),
+        radial-gradient(900px 540px at 82% 18%, rgba(6,182,212,.22), transparent 48%),
+        radial-gradient(760px 520px at 50% 100%, rgba(245,158,11,.08), transparent 50%),
+        linear-gradient(180deg, #050816 0%, var(--bg) 100%);
     }
 
     a { color: inherit; text-decoration: none; }
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
+    .wrap { width: min(var(--max), calc(100% - 28px)); margin: 0 auto; }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       backdrop-filter: blur(18px);
-      background: rgba(5,8,22,.55);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(5,8,22,.64);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .topbar-inner {
@@ -56,7 +55,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 16px 0;
+      padding: 14px 0;
     }
 
     .brand {
@@ -68,13 +67,13 @@
     }
 
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 14px;
       display: grid;
       place-items: center;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 30px rgba(124,58,237,.35);
+      box-shadow: 0 12px 30px rgba(139,92,246,.32);
       font-weight: 900;
     }
 
@@ -89,14 +88,12 @@
 
     nav a:hover { color: var(--text); }
 
-    .hero {
-      padding: 72px 0 28px;
-    }
+    .hero { padding: 72px 0 26px; }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
+      gap: 20px;
       align-items: stretch;
     }
 
@@ -108,9 +105,21 @@
     }
 
     .hero-main {
-      padding: 40px;
-      overflow: hidden;
+      padding: 42px;
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,.28), transparent 62%);
+      filter: blur(8px);
+      pointer-events: none;
     }
 
     .pill {
@@ -135,24 +144,20 @@
 
     h1 {
       margin: 18px 0 12px;
-      font-size: clamp(40px, 7vw, 74px);
-      line-height: .95;
-      letter-spacing: -.04em;
+      font-size: clamp(40px, 7vw, 76px);
+      line-height: .94;
+      letter-spacing: -.05em;
     }
 
     .lead {
       max-width: 58ch;
       color: var(--muted);
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.75;
       margin: 0 0 28px;
     }
 
-    .actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
     .btn {
       display: inline-flex;
@@ -162,14 +167,15 @@
       padding: 0 18px;
       border-radius: 14px;
       border: 1px solid transparent;
-      font-weight: 700;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      font-weight: 800;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
     }
 
     .btn:hover { transform: translateY(-1px); }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), #4f46e5);
-      box-shadow: 0 12px 30px rgba(124,58,237,.26);
+      box-shadow: 0 12px 30px rgba(139,92,246,.26);
     }
     .btn-secondary {
       border-color: rgba(255,255,255,.12);
@@ -191,11 +197,9 @@
     }
 
     .stat .k { font-size: 30px; font-weight: 900; letter-spacing: -.04em; }
-    .stat .l { margin-top: 6px; color: var(--muted); font-size: 14px; }
+    .stat .l { margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.5; }
 
-    .section {
-      padding: 22px 0 0;
-    }
+    .section { padding: 22px 0 0; }
 
     .section h2 {
       font-size: 28px;
@@ -206,8 +210,8 @@
     .section p.section-text {
       margin: 0 0 18px;
       color: var(--muted);
-      line-height: 1.7;
-      max-width: 70ch;
+      line-height: 1.75;
+      max-width: 72ch;
     }
 
     .cards {
@@ -221,19 +225,82 @@
       border-radius: var(--radius-sm);
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.08);
-      min-height: 170px;
+      min-height: 178px;
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
+    .card h3 { margin: 0 0 10px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.68; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr .92fr;
+      gap: 16px;
+      align-items: start;
     }
 
-    .card p {
-      margin: 0;
+    .fact-box, .mini-box {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .fact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(245,158,11,.14);
+      color: #fde68a;
+      border: 1px solid rgba(245,158,11,.22);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .fact-title {
+      margin: 14px 0 10px;
+      font-size: 24px;
+      letter-spacing: -.03em;
+    }
+
+    .fact-text {
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.75;
+      margin: 0 0 16px;
+      min-height: 96px;
     }
+
+    .fact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: rgba(238,242,255,.66);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .mini-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mini-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .mini-item strong { display: block; margin-bottom: 6px; }
+    .mini-item span { color: var(--muted); line-height: 1.6; }
 
     .timeline {
       display: grid;
@@ -242,7 +309,7 @@
 
     .step {
       display: grid;
-      grid-template-columns: 92px 1fr;
+      grid-template-columns: 96px 1fr;
       gap: 16px;
       align-items: start;
       padding: 18px 20px;
@@ -255,15 +322,33 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 92px;
+      width: 96px;
       min-height: 40px;
       border-radius: 999px;
-      background: rgba(124,58,237,.16);
+      background: rgba(139,92,246,.16);
       color: #ddd6fe;
-      border: 1px solid rgba(124,58,237,.24);
+      border: 1px solid rgba(139,92,246,.24);
     }
 
-    .step p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.68; }
+
+    .quote {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(139,92,246,.18), rgba(6,182,212,.10));
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .quote small { color: var(--muted); }
 
     .contact {
       display: grid;
@@ -273,11 +358,11 @@
       padding: 24px;
       margin: 22px 0 40px;
       border-radius: var(--radius);
-      background: linear-gradient(135deg, rgba(124,58,237,.18), rgba(6,182,212,.10));
+      background: linear-gradient(135deg, rgba(139,92,246,.18), rgba(245,158,11,.10));
       border: 1px solid rgba(255,255,255,.10);
     }
 
-    .contact p { margin: 6px 0 0; color: var(--muted); }
+    .contact p { margin: 6px 0 0; color: var(--muted); line-height: 1.6; }
 
     .footer {
       padding: 18px 0 40px;
@@ -285,8 +370,8 @@
       font-size: 14px;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid, .cards, .contact { grid-template-columns: 1fr; }
+    @media (max-width: 940px) {
+      .hero-grid, .cards, .split, .contact { grid-template-columns: 1fr; }
       .step { grid-template-columns: 1fr; }
       nav { display: none; }
       .hero { padding-top: 48px; }
@@ -306,11 +391,12 @@
         <div class="logo">A</div>
         <div>
           <div>Ali</div>
-          <div style="color: var(--muted); font-size: 13px; font-weight: 500;">Shaxsiy web sahifa</div>
+          <div style="color: var(--muted); font-size: 13px; font-weight: 500;">Public qiziqarli sahifa</div>
         </div>
       </div>
       <nav>
-        <a href="#xizmatlar">Xizmatlar</a>
+        <a href="#faktlar">Faktlar</a>
+        <a href="#qiziq">Qiziq joylar</a>
         <a href="#jarayon">Jarayon</a>
         <a href="#boglanish">Bog‘lanish</a>
       </nav>
@@ -321,87 +407,225 @@
     <section class="hero">
       <div class="hero-grid">
         <div class="panel hero-main">
-          <div class="pill"><span class="dot"></span> Hozir ochiq — yangi loyihalar uchun tayyor</div>
-          <h1>Salom, men Ali.<br />Zamonaviy saytlar qilaman.</h1>
+          <div class="pill"><span class="dot"></span> Hamma ko‘rishi mumkin bo‘lgan public web sayt</div>
+          <h1>Salom, men Ali.<br />Bu yerda qiziqarli narsalar bor.</h1>
           <p class="lead">
-            Bu oddiy, tez va chiroyli shaxsiy sahifa. Xohlasangiz uni portfolio, biznes sahifa,
-            yoki xizmatlaringizni ko‘rsatadigan saytga aylantirib beraman.
+            Sayt ochiq va hamma kirishi mumkin. Ichida tez o‘qiladigan faktlar, kichik qiziqarli bo‘limlar va
+            bir tugma bilan almashadigan kontent bor. Qisqasi: oddiy emas, yoqimli.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="#boglanish">Boshlash</a>
-            <a class="btn btn-secondary" href="#xizmatlar">Nimalar bor?</a>
+            <a class="btn btn-primary" href="#faktlar">Faktlarni ko‘rish</a>
+            <a class="btn btn-secondary" href="#boglanish">Saytni ulash</a>
           </div>
         </div>
 
         <aside class="panel hero-side">
           <div class="stat">
-            <div class="k">01</div>
-            <div class="l">Bitta sahifali landing page</div>
+            <div class="k">100%</div>
+            <div class="l">Public — har kim browserdan kiradi</div>
           </div>
           <div class="stat">
-            <div class="k">02</div>
-            <div class="l">Mobilga mos dizayn</div>
+            <div class="k">1 click</div>
+            <div class="l">Yangi qiziqarli faktni ko‘rish uchun bitta tugma</div>
           </div>
           <div class="stat">
-            <div class="k">03</div>
-            <div class="l">Tez yuklanadigan HTML/CSS</div>
+            <div class="k">0 clutter</div>
+            <div class="l">Toza dizayn, tez yuklanadi, mobilga mos</div>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="xizmatlar">
-      <h2>Nima qilishi mumkin</h2>
+    <section class="section" id="faktlar">
+      <h2>Qiziqarli faktlar</h2>
       <p class="section-text">
-        Bu saytni istalgan yo‘nalishga moslab beraman: shaxsiy portfolio, biznes sahifa, xizmatlar ro‘yxati,
-        kontakt sahifasi yoki oddiy landing page.
+        Pastdagi tugma bosilganda boshqa fakt chiqadi. Ichidagi gaplar qisqa, esda qoladigan va o‘qishga yengil.
       </p>
+
+      <div class="split">
+        <div class="fact-box">
+          <div class="fact-chip">Bugungi qiziq fakt</div>
+          <div class="fact-title" id="factTitle">Octopus haqida kichik sir</div>
+          <p class="fact-text" id="factText">
+            Sakkizoyoqlarning uchta yuragi bor. Ikki yuragi qonini gillarga haydaydi, bittasi esa tanaga.
+            Shuning uchun ular juda noyob jonzotlardan biri hisoblanadi.
+          </p>
+          <div class="actions" style="margin-bottom: 14px;">
+            <button class="btn btn-primary" id="nextFact" type="button">Yana bir fakt</button>
+            <button class="btn btn-secondary" id="copyFact" type="button">Matnni nusxalash</button>
+          </div>
+          <div class="fact-meta">
+            <span class="tag" id="factIndex">1 / 8</span>
+            <span class="tag" id="factCategory">Tabiat</span>
+            <span class="tag">O‘qish vaqti: 10 soniya</span>
+          </div>
+        </div>
+
+        <div class="mini-box" id="qiziq">
+          <h2 style="margin-top: 0;">Yana nimalar bor?</h2>
+          <div class="mini-grid">
+            <div class="mini-item">
+              <strong>Sayohat ruhi</strong>
+              <span>Har bir yaxshi sayt birinchi qarashda tushunarli bo‘ladi. Bu sahifa ham shunday.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Internet yoqimli sirlari</strong>
+              <span>Foydalanuvchi uchun qisqa matn, katta sarlavha va aniq tugma — eng yaxshi kombinatsiya.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Tezkor kayfiyat</strong>
+              <span>Sahifa ko‘rinishi “jiddiy” bo‘lishi shart emas. Yoqimli bo‘lsa, odam uzoqroq qoladi.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Qiziq bo‘limlar</h2>
+      <p class="section-text">Mana shu uchta bo‘lim saytni oddiy sahifadan ko‘proq hissiyotli qiladi.</p>
       <div class="cards">
         <article class="card">
-          <h3>Portfolio</h3>
-          <p>O‘zingizni, ishlaringizni va tajribangizni chiroyli ko‘rsatadigan sahifa.</p>
+          <h3>🌍 Katta dunyo, kichik ekran</h3>
+          <p>Mobil telefon ko‘p odamning asosiy brauzeri. Shuning uchun layout moslashuvchan bo‘lsa yaxshi ishlaydi.</p>
         </article>
         <article class="card">
-          <h3>Biznes sahifa</h3>
-          <p>Xizmatlar, narxlar va aloqa ma’lumotlarini bir joyga jamlaydigan tayyor layout.</p>
+          <h3>🚀 Tezlik ham dizayn</h3>
+          <p>Sayt chiroyli bo‘lishi bilan birga tez yuklansa, foydalanuvchi uchun ikki karra yoqimli bo‘ladi.</p>
         </article>
         <article class="card">
-          <h3>Landing page</h3>
-          <p>Bitta maqsadli sahifa: reklama, mahsulot, kurs, xizmat yoki aksiyalar uchun.</p>
+          <h3>✨ Kam matn, kuchli effekt</h3>
+          <p>Qisqa, aniq va foydali matnlar odamni charchatmaydi. Shu sabab bu sahifa ortiqcha gapirmaydi.</p>
         </article>
       </div>
     </section>
 
     <section class="section" id="jarayon">
-      <h2>Qanday ishlaydi</h2>
-      <p class="section-text">Agar xohlasangiz keyingi bosqichda buni yanada chiroyli va professional qilib beraman.</p>
+      <h2>Qanday ko‘rinishda</h2>
+      <p class="section-text">Agar keyinroq xohlasangiz, bu saytni blog, portfolio yoki mini-o‘yin sahifasiga aylantirish mumkin.</p>
       <div class="timeline">
         <div class="step">
           <b>1-qadam</b>
-          <p>Sahifaning maqsadini aytasiz: portfolio, biznes, blog yoki biror xizmat.</p>
+          <p>Ochiq sayt sifatida ishlaydi — havolani ko‘rgan odam bemalol kiradi.</p>
         </div>
         <div class="step">
           <b>2-qadam</b>
-          <p>Mazmunni moslab beraman: matn, ranglar, bo‘limlar, tugmalar va dizayn uslubi.</p>
+          <p>Qiziqarli faktlar almashadi, shuning uchun sahifa jonli ko‘rinadi.</p>
         </div>
         <div class="step">
           <b>3-qadam</b>
-          <p>Natijani tayyor HTML fayl ko‘rinishida beraman — brauzerda darhol ochiladi.</p>
+          <p>Keyin xohlasangiz, men unga mehmonlar uchun forma, galereya yoki qo‘shimcha sahifalar ham qo‘shaman.</p>
         </div>
       </div>
     </section>
 
-    <section class="contact panel" id="boglanish">
-      <div>
-        <h2 style="margin:0;">Bog‘lanish uchun tayyorman</h2>
-        <p>Qaysi turdagi sayt kerakligini ayting — men shu sahifani sizga moslab beraman.</p>
+    <section class="section">
+      <div class="quote">
+        <p id="quoteText">“Yaxshi sayt — bu ko‘rinishi chiroyli bo‘lgani uchun emas, oson ishlagani uchun yaxshi.”</p>
+        <small id="quoteAuthor">— Ali sahifasi uchun mini shior</small>
       </div>
-      <a class="btn btn-primary" href="mailto:hello@example.com">Email yuborish</a>
     </section>
 
-    <div class="footer">
-      © 2026 Ali — Tayyorlangan demo sayt.
-    </div>
+    <section class="contact" id="boglanish">
+      <div>
+        <h2 style="margin:0;">Hamma kiradigan public sayt tayyor</h2>
+        <p>Endi havola orqali ochiladi. Xohlasangiz keyingi bosqichda uni yanada zo‘r qilib, ko‘proq bo‘lim qo‘shaman.</p>
+      </div>
+      <a class="btn btn-primary" href="https://github.com/xdadik/ali-landing-page" target="_blank" rel="noopener">GitHub repo</a>
+    </section>
+
+    <div class="footer">© 2026 Ali — public qiziqarli sahifa.</div>
   </main>
+
+  <script>
+    const facts = [
+      {
+        title: 'Octopus haqida kichik sir',
+        text: 'Sakkizoyoqlarning uchta yuragi bor. Ikki yuragi qonini gillarga haydaydi, bittasi esa tanaga.',
+        category: 'Tabiat'
+      },
+      {
+        title: 'Kosmosdagi ovoz',
+        text: 'Kosmos vakuum bo‘lgani uchun unda tovush tarqalmaydi. Shuning uchun film sahnalari real emas, lekin juda ta’sirli.',
+        category: 'Kosmos'
+      },
+      {
+        title: 'Internet tezligi',
+        text: 'Ko‘p foydalanuvchi sahifani 3 soniya ichida ko‘rishni xohlaydi. Tez sayt — yaxshi taassurot.',
+        category: 'Web'
+      },
+      {
+        title: 'Miya va musiqa',
+        text: 'Qiziqarli musiqalar miyada e’tibor va kayfiyatni ko‘tarishga yordam berishi mumkin. Shuning uchun fon musiqa ba’zan yaxshi ishlaydi.',
+        category: 'Psixologiya'
+      },
+      {
+        title: 'Muzlatilgan vaqt emas',
+        text: 'Antarktidadagi muz qatlami juda qadimiy bo‘lishi mumkin. U yerning iqlimi o‘tmishni o‘rganishga yordam beradi.',
+        category: 'Yer'
+      },
+      {
+        title: 'Kitoblar va xotira',
+        text: 'O‘qish miyani faol tutadi. Yangi so‘z va g‘oyalar xotirani mashq qildiradi.',
+        category: 'O‘rganish'
+      },
+      {
+        title: 'Ranglar ta’siri',
+        text: 'Ranglar odamning kayfiyatiga ta’sir qilishi mumkin. Shu sabab dizaynda rang tanlovi juda muhim.',
+        category: 'Dizayn'
+      },
+      {
+        title: 'Qisqa matn kuchi',
+        text: 'Qisqa va aniq yozuvlar ko‘proq o‘qiladi. Ortiqcha gapirmaslik — yaxshi foydalanuvchi tajribasi.',
+        category: 'Copywriting'
+      }
+    ];
+
+    const quotePairs = [
+      ['“Yaxshi sayt — oson tushuniladigan sayt.”', '— foydalanuvchi uchun yozilgan qoida'],
+      ['“Qiziq bo‘lsin, lekin chalg‘itmasin.”', '— dizaynning oltin qoidasi'],
+      ['“Tezlik + sodda matn = kuchli taassurot.”', '— mini landing page formulasi'],
+      ['“Bir tugma ba’zan o‘nta paragrafdan kuchliroq.”', '— UX iqtibos'],
+    ];
+
+    let current = 0;
+    const factTitle = document.getElementById('factTitle');
+    const factText = document.getElementById('factText');
+    const factIndex = document.getElementById('factIndex');
+    const factCategory = document.getElementById('factCategory');
+    const quoteText = document.getElementById('quoteText');
+    const quoteAuthor = document.getElementById('quoteAuthor');
+
+    function renderFact(index) {
+      const fact = facts[index];
+      factTitle.textContent = fact.title;
+      factText.textContent = fact.text;
+      factIndex.textContent = `${index + 1} / ${facts.length}`;
+      factCategory.textContent = fact.category;
+      const q = quotePairs[index % quotePairs.length];
+      quoteText.textContent = q[0];
+      quoteAuthor.textContent = q[1];
+    }
+
+    document.getElementById('nextFact').addEventListener('click', () => {
+      current = (current + 1) % facts.length;
+      renderFact(current);
+    });
+
+    document.getElementById('copyFact').addEventListener('click', async () => {
+      const text = `${factTitle.textContent}: ${factText.textContent}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById('copyFact');
+        const old = btn.textContent;
+        btn.textContent = 'Nusxalandi';
+        setTimeout(() => (btn.textContent = old), 1200);
+      } catch {
+        alert('Nusxalash imkoni bo‘lmadi, lekin matn tayyor.');
+      }
+    });
+
+    renderFact(current);
+  </script>
 </body>
 </html>
